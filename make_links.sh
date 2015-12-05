@@ -1,8 +1,9 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-rm ~/.bashrc ~/.vimrc ~/.vim
-ln -s $DIR/bashrc ~/.bashrc  
-ln -s $DIR/vimrc ~/.vimrc
-ln -s $DIR/vim ~/.vim
-ln -s $DIR ~/.matplotlibrc
+rm $HOME/.bashrc $HOME/.vimrc $HOME/.vim $HOME/.profile
+ln -s $DIR/profile $HOME/.profile  
+ln -s $DIR/bashrc $HOME/.bashrc  
+ln -s $DIR/vimrc $HOME/.vimrc
+ln -s $DIR/vim $HOME/.vim
+ln -s $DIR $HOME/.matplotlibrc
 
