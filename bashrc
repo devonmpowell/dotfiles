@@ -1,6 +1,5 @@
-# .bashrc
-
 ###############################################
+# .bashrc
 # GLOBAL (do not change): 
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -8,7 +7,7 @@ fi
 if [ -f /etc/bash.bashrc ]; then
 	. /etc/bash.bashrc
 fi
-export HISTCONTROL=ignoreboth:erasedups  # no duplicate entries
+export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -21,21 +20,18 @@ alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
 alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
 ###############################################
 
+# host-specific things 
+HOSTNAME=$(hostname)
 
-###############################################
-# Ubuntu:
-export PATH=/home/devon/anaconda/bin:$PATH
-###############################################
+# devon-slac (SLAC Ubuntu laptop) 
+if [ $HOSTNAME == "devon-slac" ]; then
+	export PATH=/home/devon/anaconda/bin:$PATH
+fi
 
-
-###############################################
-# Sherlock:
-#module load intelmpi # Intel MPI compiler
-#export PATH=/scratch/users/dmpowel1/anaconda2/bin:$PATH # Anaconda for python
-###############################################
-
-
-
-
+# Sherlock
+if [ ${HOSTNAME:0:8} == "sherlock" ]; then
+	module load intelmpi
+	export PATH=/scratch/users/dmpowel1/anaconda2/bin:$PATH
+fi
 
 
