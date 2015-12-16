@@ -17,7 +17,8 @@ alias la='ls -A'
 alias l='ls -CF'
 alias notebook='ipython notebook'
 alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
-alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
+#alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu -L 9201:sherlock.stanford.edu:9201 '
+alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu -L 9201:[::1]:9201 '
 ###############################################
 
 # host-specific things 
