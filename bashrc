@@ -17,16 +17,23 @@ alias la='ls -A'
 alias l='ls -CF'
 alias notebook='ipython notebook'
 alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
+alias mpa='ssh -X dmpowell@slogin.mpa-garching.mpg.de'
 alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
 ###############################################
 
 # machine-specific things 
 HOSTNAME=$(hostname)
 
-# devon-slac (SLAC Ubuntu laptop) 
-if [ $HOSTNAME == "devon-slac" ]; then
-	export PATH=/home/devon/anaconda/bin:$PATH
+# devon-lappy (Devon's laptop)
+if [ $HOSTNAME == "devon-lappy" ]; then
+	export PATH=$HOME/anaconda2/bin:$PATH
+	export PYTHONPATH=$HOME/anaconda2
+	#export PATH=/usr/local/povray-3.6:$PATH
+	#export PATH=/usr/local/julia:$PATH
+	export
+	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/fftw3/lib:/usr/local/lib
 	alias notebook='ipython notebook'
+	alias hotspot='nmcli device wifi hotspot con-name my-hotspot ssid devon-lappy-hotspot band bg password jesu1sunm0tdepass3'
 	alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
 	alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
 fi
@@ -40,5 +47,3 @@ if [ ${HOSTNAME:0:8} == "sherlock" ]; then
 	module load intelmpi
 	module load cuda 
 fi
-
-
