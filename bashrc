@@ -28,7 +28,7 @@ HOSTNAME=$(hostname)
 # Freya at MPA 
 if [ ${HOSTNAME:0:5} == "freya" ]; then
 	alias notebook='ipython notebook --no-browser' 
-	alias squeue='squeue -u dmpowel1'
+	alias squeue='squeue -u dmpowell'
 	module load intel 
 	module load impi
 	module load cuda 
