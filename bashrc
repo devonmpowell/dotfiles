@@ -36,6 +36,14 @@ if [ ${HOSTNAME:0:5} == "freya" ]; then
 	module load anaconda 
 	module load git 
 	module load petsc-real
+
+	#PGPLOT
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/pgplot/"
+	export PGPLOT_DIR="/u/dmpowell/packages/pgplot/"
+	export PGPLOT_FONT="/u/dmpowell/packages/pgplot/grfont.dat"
+	export PGPLOT_DEV=/XWINDOW
+	export CLICOLOR='true'
+	export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
 # devon-lappy (Devon's laptop)
