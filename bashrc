@@ -29,11 +29,13 @@ HOSTNAME=$(hostname)
 if [ ${HOSTNAME:0:5} == "freya" ]; then
 	alias notebook='ipython notebook --no-browser' 
 	alias squeue='squeue -u dmpowell'
+	alias interactive='unset I_MPI_HYDRA_BOOTSTRAP; unset I_MPI_PMI_LIBRARY'
 	module load intel 
 	module load impi
 	module load cuda 
 	module load anaconda 
 	module load git 
+	module load petsc-real
 fi
 
 # devon-lappy (Devon's laptop)
