@@ -18,7 +18,7 @@ syntax on
 set number
 
 " soft wrapping
-set tw=100
+set tw=200
 
 " tab display width
 set shiftwidth=4

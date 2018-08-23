@@ -32,10 +32,17 @@ if [ ${HOSTNAME:0:5} == "freya" ]; then
 	alias interactive='unset I_MPI_HYDRA_BOOTSTRAP; unset I_MPI_PMI_LIBRARY'
 	module load intel 
 	module load impi
+	module load mkl 
 	module load cuda 
 	module load anaconda 
 	module load git 
-	module load petsc-real
+	module load cmake 
+
+	# my own PETSc install (with Cuda enabled)
+	#module load petsc-real
+	export PETSC_DIR="/u/dmpowell/packages/petsc/"
+	#export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/petsc/arch-linux2-c-debug/lib"
+	#export PATH="$PATH:/u/dmpowell/packages/petsc/arch-linux2-c-debug/bin"
 
 	#PGPLOT
 	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/pgplot/"
