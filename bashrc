@@ -53,6 +53,18 @@ if [ ${HOSTNAME:0:5} == "freya" ]; then
 	export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
+# devon-mpa (work laptop)
+if [ $HOSTNAME == "devon-mpa" ]; then
+	export PATH=$HOME/anaconda2/bin:$PATH
+	export PATH=/usr/local/casa-release-5.3.0-143.el7/bin:$PATH
+	export PYTHONPATH=$HOME/anaconda2
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/fftw3/lib:/usr/local/lib
+	export PGPLOT_DIR=/usr/local/pgplot
+	export SCPFREYA=dmpowell@freya04.bc.rzg.mpg.de
+	alias notebook='ipython notebook'
+	alias freya-notebook-tunnel='ssh -nNT -L 9999:localhost:1029 dmpowell@freya04.bc.rzg.mpg.de'
+fi
+
 # devon-lappy (Devon's laptop)
 if [ $HOSTNAME == "devon-lappy" ]; then
 	export PATH=$HOME/anaconda2/bin:$PATH
@@ -68,14 +80,4 @@ if [ $HOSTNAME == "devon-lappy" ]; then
 	alias hotspot='nmcli device wifi hotspot con-name my-hotspot ssid devon-lappy-hotspot band bg password jesu1sunm0tdepass3'
 	alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
 	alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
-fi
-
-# Sherlock
-if [ ${HOSTNAME:0:8} == "sherlock" ]; then
-	export PATH=$SCRATCH/anaconda2/bin:$PATH
-	export LD_LIBRARY_PATH=$SCRATCH/gsl-2.1/lib:$LD_LIBRARY_PATH
-	alias notebook='ipython notebook --no-browser --port=9201'
-	alias squeue='squeue -u dmpowel1'
-	module load intelmpi
-	module load cuda 
 fi
