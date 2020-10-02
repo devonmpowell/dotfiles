@@ -54,7 +54,7 @@ if [ ${HOSTNAME:0:5} == "freya" ]; then
 fi
 
 # devon-mpa (work laptop)
-if [ $HOSTNAME == "devon-mpa" ]; then
+if [ $HOSTNAME == "devon-mpa-lappy" ]; then
 	export PATH=$HOME/anaconda2/bin:$PATH
 	export PATH=/usr/local/casa-release-5.3.0-143.el7/bin:$PATH
 	export PYTHONPATH=$HOME/anaconda2
@@ -65,8 +65,8 @@ if [ $HOSTNAME == "devon-mpa" ]; then
 	alias freya-notebook-tunnel='ssh -nNT -L 9999:localhost:1029 dmpowell@freya04.bc.rzg.mpg.de'
 fi
 
-# devon-lappy (Devon's laptop)
-if [ $HOSTNAME == "devon-lappy" ]; then
+# home (Devon's personal laptop)
+if [ $HOSTNAME == "home" ]; then
 	export PATH=$HOME/anaconda2/bin:$PATH
 	export PATH=/usr/local/casa-release-5.3.0-143.el7/bin:$PATH
 	export PYTHONPATH=$HOME/anaconda2
@@ -75,8 +75,7 @@ if [ $HOSTNAME == "devon-lappy" ]; then
 	export SCPFREYA=dmpowell@freya04.bc.rzg.mpg.de
 	alias notebook='ipython notebook'
 	alias freya-notebook-connect='(ssh -nNT -L 9999:localhost:1029 dmpowell@freya04.bc.rzg.mpg.de &); xdg-open http://localhost:9999/'
-	alias slogin-notebook-connect='(ssh -nNT -L 6666:localhost:7777 dmpowell@slogin.mpa-garching.mpg.de)' #'; xdg-open http://localhost:6666/'
-	#alias hotspot='sudo service network-manager restart; nmcli device wifi hotspot con-name my-hotspot ssid devon-lappy-hotspot band bg password jesu1sunm0tdepass3'
+	alias slogin-notebook-connect='(ssh -nNT -L 6666:localhost:7777 dmpowell@slogin.mpa-garching.mpg.de)'
 	alias hotspot='nmcli device wifi hotspot con-name my-hotspot ssid devon-lappy-hotspot band bg password jesu1sunm0tdepass3'
 	alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
 	alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
