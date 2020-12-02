@@ -27,23 +27,53 @@ HOSTNAME=$(hostname)
 
 # Freya at MPA 
 if [ ${HOSTNAME:0:5} == "freya" ]; then
-	alias notebook='ipython notebook --no-browser' 
-	alias squeue='squeue -u dmpowell'
-	alias interactive='unset I_MPI_HYDRA_BOOTSTRAP; unset I_MPI_PMI_LIBRARY'
+
+	# load modules
 	module load intel 
 	module load impi
-	module load mkl 
 	module load cuda 
-	module load anaconda 
 	module load git 
-	module load cmake 
 
-	# my own PETSc install (with Cuda enabled)
+	# useful aliases
+	alias nb_bg_start='nohup ipython notebook --no-browser --port=1029 &' 
+	alias interactive='unset I_MPI_HYDRA_BOOTSTRAP; unset I_MPI_PMI_LIBRARY; export I_MPI_SHM_LMT=shm'
+
+	# casa
+	# Make sure this come before Anaconda, so that the 
+	# defualt python install is not hijacked!
+	export PATH="/u/dmpowell/packages/casa-release-5.3.0-143.el7/bin:$PATH"
+	alias casapy="/u/dmpowell/packages/casa-release-5.3.0-143.el7/bin/python"
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/casacore/lib"
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/boost_1_67_0/stage/lib"
+
+	# Anaconda local install 
+	#module load anaconda 
+	export PATH="/u/dmpowell/packages/anaconda2/bin:$PATH"
+	export PYTHONPATH="/u/dmpowell/packages/anaconda2"
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/anaconda2/lib"
+
+	# Adding my own Pythons scripts to the path
+	PYTHONPATH="$PYTHONPATH:/u/dmpowell/reconstruction_2020/scripts"
+
+	# PETSc install 
 	#module load petsc-real
-	export PETSC_DIR="/u/dmpowell/packages/petsc/"
-	#export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/petsc/arch-linux2-c-debug/lib"
-	#export PATH="$PATH:/u/dmpowell/packages/petsc/arch-linux2-c-debug/bin"
 
+	# openmp
+	export OMP_NUM_THREADS=1
+	export OMP_THREAD_LIMIT=1
+
+	# ds9 viewer
+	export PATH="/u/dmpowell/packages/ds9:$PATH"
+
+	# archive
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/libarchive-3.4.3/lib"
+	export PATH="$PATH:/u/dmpowell/packages/libarchive-3.4.3"
+	
+	# gsl
+	#module load gsl
+	export GSL_HOME="/u/dmpowell/packages/gsl-2.6"
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GSL_HOME/lib"
+	
 	#PGPLOT
 	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/pgplot/"
 	export PGPLOT_DIR="/u/dmpowell/packages/pgplot/"
@@ -73,3 +103,4 @@ if [ ${HOSTNAME:0:8} == "sherlock" ]; then
 	module load intelmpi
 	module load cuda 
 fi
+
