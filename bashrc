@@ -83,24 +83,41 @@ if [ ${HOSTNAME:0:5} == "freya" ]; then
 	export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
-# devon-lappy (Devon's laptop)
-if [ $HOSTNAME == "devon-lappy" ]; then
+# devon-mpa (work laptop)
+if [ $HOSTNAME == "devon-mpa-lappy" ]; then
+
+	export SCPFREYA=dmpowell@freya04.bc.rzg.mpg.de
+	alias notebook='ipython notebook'
+	alias freya-notebook-tunnel='ssh -nNT -L 9999:localhost:1029 dmpowell@freya04.bc.rzg.mpg.de'
+
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('/home/devon/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+	    eval "$__conda_setup"
+	else
+	    if [ -f "/home/devon/anaconda3/etc/profile.d/conda.sh" ]; then
+	        . "/home/devon/anaconda3/etc/profile.d/conda.sh"
+	    else
+	        export PATH="/home/devon/anaconda3/bin:$PATH"
+	    fi
+	fi
+	unset __conda_setup
+
+fi
+
+# home (Devon's personal laptop)
+if [ $HOSTNAME == "home" ]; then
 	export PATH=$HOME/anaconda2/bin:$PATH
+	export PATH=/usr/local/casa-release-5.3.0-143.el7/bin:$PATH
 	export PYTHONPATH=$HOME/anaconda2
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/fftw3/lib:/usr/local/lib
+	export PGPLOT_DIR=/usr/local/pgplot
+	export SCPFREYA=dmpowell@freya04.bc.rzg.mpg.de
 	alias notebook='ipython notebook'
+	alias freya-notebook-connect='(ssh -nNT -L 9999:localhost:1029 dmpowell@freya04.bc.rzg.mpg.de &); xdg-open http://localhost:9999/'
+	alias slogin-notebook-connect='(ssh -nNT -L 6666:localhost:7777 dmpowell@slogin.mpa-garching.mpg.de)'
 	alias hotspot='nmcli device wifi hotspot con-name my-hotspot ssid devon-lappy-hotspot band bg password jesu1sunm0tdepass3'
 	alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
 	alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
-fi
-
-# Sherlock
-if [ ${HOSTNAME:0:8} == "sherlock" ]; then
-	export PATH=$SCRATCH/anaconda2/bin:$PATH
-	export LD_LIBRARY_PATH=$SCRATCH/gsl-2.1/lib:$LD_LIBRARY_PATH
-	alias notebook='ipython notebook --no-browser --port=9201'
-	alias squeue='squeue -u dmpowel1'
-	module load intelmpi
-	module load cuda 
 fi
 

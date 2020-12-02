@@ -1,0 +1,3 @@
+
+Host freya01.bc.rzg.mpg.de freya02.bc.rzg.mpg.de freya03.bc.rzg.mpg.de freya04.bc.rzg.mpg.de
+	ProxyCommand ssh -X dmpowell@slogin.mpa-garching.mpg.de nc %h %p 
