@@ -55,14 +55,24 @@ fi
 
 # devon-mpa (work laptop)
 if [ $HOSTNAME == "devon-mpa-lappy" ]; then
-	export PATH=$HOME/anaconda2/bin:$PATH
-	export PATH=/usr/local/casa-release-5.3.0-143.el7/bin:$PATH
-	export PYTHONPATH=$HOME/anaconda2
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/fftw3/lib:/usr/local/lib
-	export PGPLOT_DIR=/usr/local/pgplot
+
 	export SCPFREYA=dmpowell@freya04.bc.rzg.mpg.de
 	alias notebook='ipython notebook'
 	alias freya-notebook-tunnel='ssh -nNT -L 9999:localhost:1029 dmpowell@freya04.bc.rzg.mpg.de'
+
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('/home/devon/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+	    eval "$__conda_setup"
+	else
+	    if [ -f "/home/devon/anaconda3/etc/profile.d/conda.sh" ]; then
+	        . "/home/devon/anaconda3/etc/profile.d/conda.sh"
+	    else
+	        export PATH="/home/devon/anaconda3/bin:$PATH"
+	    fi
+	fi
+	unset __conda_setup
+
 fi
 
 # home (Devon's personal laptop)
@@ -80,3 +90,4 @@ if [ $HOSTNAME == "home" ]; then
 	alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
 	alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
 fi
+
