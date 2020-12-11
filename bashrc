@@ -83,6 +83,44 @@ if [ ${HOSTNAME:0:5} == "freya" ]; then
 	export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
+# MPCDF Cobra 
+if [ ${HOSTNAME:0:5} == "cobra" ]; then
+
+	# load modules
+	module load intel 
+	module load impi
+	module load cuda 
+	module load git 
+	module load petsc-real-double
+	module load anaconda/2/2019.03 
+
+	# useful alias
+	alias cpurun='srun --partition=interactive --nodes=1' 
+	alias gpurun='srun --partition=gpudev --gres=gpu:v100:2 --time=00:14:59 --nodes=1' 
+
+	# gsl
+	module load gsl
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GSL_HOME/lib"
+
+	# ds9 viewer
+	export PATH="/u/dmpowell/packages/ds9:$PATH"
+
+	#PGPLOT
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/packages/pgplot/"
+	export PGPLOT_DIR="/u/dmpowell/packages/pgplot/"
+	export PGPLOT_FONT="/u/dmpowell/packages/pgplot/grfont.dat"
+	export PGPLOT_DEV=/XWINDOW
+	export CLICOLOR='true'
+	export LSCOLORS="gxfxcxdxbxegedabagacad"
+
+	# openmp
+	export OMP_NUM_THREADS=1
+	export OMP_THREAD_LIMIT=1
+
+fi
+
+
+
 # devon-mpa (work laptop)
 if [ $HOSTNAME == "devon-mpa-lappy" ]; then
 
