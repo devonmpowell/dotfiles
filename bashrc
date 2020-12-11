@@ -15,10 +15,9 @@ shopt -s checkwinsize
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias kils='ssh -X dmpowel1@ki-ls08.slac.stanford.edu'
-alias sherlock='ssh -X dmpowel1@sherlock.stanford.edu'
 alias mpa='ssh -X dmpowell@slogin.mpa-garching.mpg.de'
 alias freya='ssh -X dmpowell@freya04.bc.rzg.mpg.de'
+alias cobra='ssh -X dmpowell@cobra02i.mpcdf.mpg.de'
 ###############################################
 
 
