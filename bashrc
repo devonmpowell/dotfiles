@@ -34,6 +34,8 @@ if [ ${HOSTNAME:0:5} == "freya" ]; then
 	module load git 
 
 	# useful aliases
+	alias cpurun='srun --partition=p.24h --time=01:00:00 --nodes=1' 
+	alias gpurun='srun --partition=p.gpu --gres=gpu:2 --time=01:00:00 --nodes=1' 
 	alias nb_bg_start='nohup ipython notebook --no-browser --port=1029 &' 
 	alias interactive='unset I_MPI_HYDRA_BOOTSTRAP; unset I_MPI_PMI_LIBRARY; export I_MPI_SHM_LMT=shm'
 
