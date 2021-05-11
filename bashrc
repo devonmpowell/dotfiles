@@ -18,6 +18,7 @@ alias l='ls -CF'
 alias mpa='ssh -X dmpowell@slogin.mpa-garching.mpg.de'
 alias freya='ssh -X dmpowell@freya04.bc.rzg.mpg.de'
 alias cobra='ssh -X dmpowell@cobra02i.mpcdf.mpg.de'
+alias raven='ssh -X dmpowell@raven02i.mpcdf.mpg.de'
 ###############################################
 
 
@@ -128,6 +129,9 @@ if [ $HOSTNAME == "devon-mpa-lappy" ]; then
 	export SCPFREYA=dmpowell@freya04.bc.rzg.mpg.de
 	alias notebook='ipython notebook'
 	alias freya-notebook-tunnel='ssh -nNT -L 9999:localhost:1029 dmpowell@freya04.bc.rzg.mpg.de'
+
+	# gsl
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu"
 
 	# !! Contents within this block are managed by 'conda init' !!
 	__conda_setup="$('/home/devon/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
