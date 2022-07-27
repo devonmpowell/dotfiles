@@ -50,10 +50,6 @@ if [[ $HOSTNAME == "freya"* ]]; then
 	#module load pytorch/gpu-cuda-11.4/1.10.0
 	CONDA_HOME=$CONDA_PREFIX
 
-	# local user installs
-	export PATH="/u/dmpowell/.local/bin:$PATH"
-	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/u/dmpowell/.local/lib"
-
 	# Adding my own Pythons scripts to the path
 	export PYTHONPATH="$PYTHONPATH:/u/dmpowell/reconstruction_2020/scripts"
 
