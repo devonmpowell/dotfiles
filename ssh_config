@@ -1,10 +1,32 @@
+###############
+# .ssh/config #
+###############
 
-Host freya01.bc.rzg.mpg.de freya02.bc.rzg.mpg.de freya03.bc.rzg.mpg.de freya04.bc.rzg.mpg.de
-	ProxyCommand ssh -X dmpowell@slogin.mpa-garching.mpg.de nc %h %p 
+# TODO: Set up key pairs for no passwords!!!
+
+Host freya
+	HostName freya04.bc.rzg.mpg.de
+	ProxyCommand ssh mpa-slogin nc %h %p 
+
+Host cobra
+	HostName cobra02i.mpcdf.mpg.de
+	ProxyCommand ssh mpa-slogin nc %h %p 
+
+Host raven
+	HostName raven02i.mpcdf.mpg.de
+	ProxyCommand ssh mpa-slogin nc %h %p 
+
+Host mpa-slogin
+	HostName slogin.mpa-garching.mpg.de
+	#IdentityFile ~/.ssh/mpa-slogin.key
+
+Host *
+	User dmpowell
+	Compression yes
+	ForwardX11 yes
+	ServerAliveInterval 60
+	ServerAliveCountMax 30
+	ControlPath ~/.ssh/controlmasters/%r@%h:%p
+	ControlMaster auto
 
 
-Host cobra01i.mpcdf.mpg.de cobra02i.mpcdf.mpg.de
-	ProxyCommand ssh -X dmpowell@slogin.mpa-garching.mpg.de nc %h %p 
-
-Host raven01i.mpcdf.mpg.de raven02i.mpcdf.mpg.de
-	ProxyCommand ssh -X dmpowell@slogin.mpa-garching.mpg.de nc %h %p 
