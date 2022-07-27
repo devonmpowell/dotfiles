@@ -13,9 +13,11 @@ HOSTNAME=$(hostname)
 # lappy and mpa-lappy (personal Ubuntu systems)
 if [[ $HOSTNAME == "lappy" ]]; then
 	CONDA_HOME="/home/devon/anaconda3"
+	export MESA_LOADER_DRIVER_OVERRIDE=i965
 fi
 if [[ $HOSTNAME == "mpa-lappy" ]]; then
 	CONDA_HOME="/usr/local/anaconda3"
+	export MESA_LOADER_DRIVER_OVERRIDE=i965
 fi
 
 
