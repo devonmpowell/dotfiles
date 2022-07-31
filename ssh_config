@@ -2,8 +2,6 @@
 # .ssh/config #
 ###############
 
-# TODO: Set up key pairs for no passwords!!!
-
 Host freya
 	HostName freya04.bc.rzg.mpg.de
 	ProxyCommand ssh mpa-slogin nc %h %p 
@@ -28,5 +26,6 @@ Host *
 	ServerAliveCountMax 30
 	ControlPath ~/.ssh/controlmasters/%r@%h:%p
 	ControlMaster auto
+	ControlPersist yes
 
 
