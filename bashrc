@@ -56,6 +56,7 @@ if [[ $HOSTNAME == "freya"* ]]; then
 	alias gpurun='srun --partition=p.test --gres=gpu:2 --time=00:30:00'
 	alias nbstart='nohup ipython notebook --no-browser --port=1029 &' 
 	alias interactive='unset I_MPI_HYDRA_BOOTSTRAP; unset I_MPI_PMI_LIBRARY; export I_MPI_SHM_LMT=shm'
+	alias sq='squeue --me --format="%.18i %.9P %.24j %.2t %.10M %.6D %R"'
 fi
 
 # Raven at MPCDF 
@@ -63,6 +64,7 @@ if [[ $HOSTNAME == "rav"* ]]; then
 	alias cpurun='srun --mem=120000 --time=00:30:00' 
 	alias gpurun='srun --constraint="gpu" --gres=gpu:a100:1 --mem=125000 --time=00:00:30' 
 	alias nbstart='nohup ipython notebook --no-browser --port=1029 &' 
+	alias sq='squeue --me --format="%.18i %.9P %.24j %.2t %.10M %.6D %R"'
 fi
 
 
