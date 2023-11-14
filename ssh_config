@@ -11,7 +11,7 @@ Host cobra
 	ProxyCommand ssh mpa-slogin nc %h %p 
 
 Host raven
-	HostName raven02i.mpcdf.mpg.de
+	HostName raven01i.mpcdf.mpg.de
 	ProxyCommand ssh mpa-slogin nc %h %p 
 
 Host mpa-slogin
