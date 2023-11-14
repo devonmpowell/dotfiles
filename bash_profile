@@ -14,10 +14,20 @@ HOSTNAME=$(hostname)
 if [[ $HOSTNAME == "lappy" ]]; then
 	CONDA_HOME="/home/devon/anaconda3"
 	export MESA_LOADER_DRIVER_OVERRIDE=i965
+	export MOZ_ENABLE_WAYLAND=1
+	
+	# Install Ruby Gems to ~/gems
+	export GEM_HOME="$HOME/gems"
+	export PATH="$HOME/gems/bin:$PATH"
 fi
 if [[ $HOSTNAME == "mpa-lappy" ]]; then
 	CONDA_HOME="/usr/local/anaconda3"
 	export MESA_LOADER_DRIVER_OVERRIDE=i965
+	export MOZ_ENABLE_WAYLAND=1
+
+	# Install Ruby Gems to ~/gems
+	export GEM_HOME="$HOME/gems"
+	export PATH="$HOME/gems/bin:$PATH"
 fi
 
 

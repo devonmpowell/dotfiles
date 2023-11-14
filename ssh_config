@@ -2,17 +2,27 @@
 # .ssh/config #
 ###############
 
-Host freya
+
+Host freya-remote
 	HostName freya04.bc.rzg.mpg.de
 	ProxyCommand ssh mpa-slogin nc %h %p 
 
-Host cobra
+Host cobra-remote
 	HostName cobra02i.mpcdf.mpg.de
 	ProxyCommand ssh mpa-slogin nc %h %p 
 
-Host raven
+Host raven-remote
 	HostName raven01i.mpcdf.mpg.de
 	ProxyCommand ssh mpa-slogin nc %h %p 
+
+Host freya
+	HostName freya04.bc.rzg.mpg.de
+
+Host cobra
+	HostName cobra02i.mpcdf.mpg.de
+
+Host raven
+	HostName raven01i.mpcdf.mpg.de
 
 Host mpa-slogin
 	HostName slogin.mpa-garching.mpg.de
