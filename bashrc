@@ -46,7 +46,22 @@ HOSTNAME=$(hostname)
 if [[ $HOSTNAME == *"lappy"* ]]; then
 	alias notebook='jupyter notebook'
 	alias freya-notebook-connect='ssh -nNT -L 9999:localhost:1029 freya; xdg-open http://localhost:9999/'
-	alias raven-notebook-connect='ssh -nNT -L 8888:localhost:1029 raven; xdg-open http://localhost:8888/'
+	alias raven-notebook-connect='ssh -nNT -L 8118:localhost:1029 raven; xdg-open http://localhost:8118/'
+
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+	    eval "$__conda_setup"
+	else
+	    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+	        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+	    else
+	        export PATH="/usr/local/anaconda3/bin:$PATH"
+	    fi
+	fi
+	unset __conda_setup
+	# <<< conda initialize <<<
 fi
 
 

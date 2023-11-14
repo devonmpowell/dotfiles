@@ -14,10 +14,20 @@ HOSTNAME=$(hostname)
 if [[ $HOSTNAME == "lappy" ]]; then
 	CONDA_HOME="/home/devon/anaconda3"
 	export MESA_LOADER_DRIVER_OVERRIDE=i965
+	export MOZ_ENABLE_WAYLAND=1
+	
+	# Install Ruby Gems to ~/gems
+	export GEM_HOME="$HOME/gems"
+	export PATH="$HOME/gems/bin:$PATH"
 fi
 if [[ $HOSTNAME == "mpa-lappy" ]]; then
 	CONDA_HOME="/usr/local/anaconda3"
 	export MESA_LOADER_DRIVER_OVERRIDE=i965
+	export MOZ_ENABLE_WAYLAND=1
+
+	# Install Ruby Gems to ~/gems
+	export GEM_HOME="$HOME/gems"
+	export PATH="$HOME/gems/bin:$PATH"
 fi
 
 
@@ -28,7 +38,10 @@ if [[ $HOSTNAME == "freya"* ]]; then
 	module load intel/19.1.3
 	module load impi/2019.9
 	module load cuda/11.4
+	module load cudnn/8.2.4
 	module load petsc-real-double/3.13.5
+	module load slepc-real-double/3.17
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SLEPC_HOME/lib"
 	module load git 
 	module load fftw-serial/3.3.10
 
